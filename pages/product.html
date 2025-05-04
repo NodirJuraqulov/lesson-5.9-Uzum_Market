@@ -45,7 +45,7 @@
         <div class="container">
             <div class="section2">
                 <div class="logo">
-                    <img src="/assets/Link → SVG.png" alt="">
+                    <a href="/index.html"><img src="/assets/Link → SVG.png" alt=""></a>
                 </div>
 
                 <div class="search">
@@ -124,17 +124,52 @@
 
 
     <div class="see_more container">
-        <!-- <div class="product_img">
-            <img src="/assets/t_product_540_high.jpg.png" alt="">
+        <div class="detail_page">
+            <div class="detail">
+                <div class="product_img">
+                    <img src="/assets/t_product_540_high.jpg.png" alt="">
+                </div>
+        
+                <div class="product_about">
+                    <h2>title: Redmi Note 13 Pro Max</h2>
+                    <p>description: Lorem ipsum, dolor sit ametfsfdsf sdfsf sdf consectetur adipisicing elit. Voluptas, nostrum?</p>
+                    
+                    <div class="brand">
+                        <p>brand: <span>sdfsf</span></p>
+                        <p>category: <span>sffs</span></p>
+                    </div>
+        
+                    <div class="price">
+                        <p>price: 99</p>
+                        <p>reting: 4.5</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="reviews">
+                <div class="review">
+                    <p>rating: <span>5</span></p>
+                    <p>comment:fsf</p>
+                    <p>date:fdsf</p>
+                    <p>reviewerName:sdd</p>
+                    <p>reviewerEmail:sdf</p>
+                </div>
+                <div class="review">
+                    <p>rating: <span>5</span></p>
+                    <p>comment:fsf</p>
+                    <p>date:fdsf</p>
+                    <p>reviewerName:sdd</p>
+                    <p>reviewerEmail:sdf</p>
+                </div>
+                <div class="review">
+                    <p>rating: <span>5</span></p>
+                    <p>comment:fsf</p>
+                    <p>date:fdsf</p>
+                    <p>reviewerName:sdd</p>
+                    <p>reviewerEmail:sdf</p>
+                </div>
+            </div>
         </div>
-
-        <div class="product_about">
-            <h2>brand: Redmi Note 13 Pro Max</h2>
-            <p>title: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, nostrum?</p>
-            <p>description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse, rerum. Nam cumque doloremque aspernatur impedit nisi doloribus reprehenderit praesentium quae!</p>
-            <span>price: 99</span>
-            <span>reting: 4.5</span>
-        </div> -->
     </div>
 
 
@@ -200,53 +235,6 @@
     </footer>
 
 
-
-    <script>
-        // See more:
-        const BASE_URL = "https://dummyjson.com";
-        const box = document.querySelector(".see_more");
-
-        function renderDetail(data) {
-            box.innerHTML = `
-                <div class="product_img">
-                    <img src=${data.images[0]} alt="">
-                </div>
-            
-                <div class="product_about">
-                    <h2>${data.brand}</h2>
-                    <p>${data.title}</p>
-                    <p>${data.description}</p>
-                    <span>price: ${data.price}$</span>
-                    <p>rating: ${data.rating}</p>
-                </div>
-            `
-        }
-
-        function fetchData(endpoint) {
-            fetch(`${BASE_URL}${endpoint}`)
-                .then((res) => {
-                    if(!res.ok){
-                        throw new Error("something went wrong :(");
-                    }
-                    return res.json();
-                })
-                .then((data) => {
-                    console.log(data);
-                    renderDetail(data);
-                })
-                .catch(err =>{
-                    console.log(err);
-                })
-                .finally(()=>{
-                    // skeletonEl.style.display = "none"
-                })
-        }
-
-        window.addEventListener("load", ()=>{
-            let params = new URLSearchParams(location.search);
-            fetchData(`/products/${params.get("q")}`);
-        })
-
-    </script>
+    <script type="module" src="/js/detail.js"></script>
 </body>
 </html>
