@@ -2,6 +2,7 @@
 import { fetchData } from "./main.js";
 
 const box = document.querySelector(".see_more");
+const detailSkeletonEl = document.querySelector(".detail_skeleton");
 let params = new URLSearchParams(location.search);
 
 function renderDetail(data) {
@@ -56,9 +57,29 @@ function renderDetail(data) {
     `
 }
 
+function renderDetailSkeleton(count) {
+    const fragment = document.createDocumentFragment();
+    Array(count).fill("").forEach(() => {
+        let skeletonItem = document.createElement("div");
+        skeletonItem.className = "skeleton_item";
+        skeletonItem.innerHTML = `
+            <div class="skeleton_img skeleton_animation"></div>
+            <div class="skeleton_info skeleton_animation"></div>
+        `
+        fragment.appendChild(skeletonItem);
+    })
+    detailSkeletonEl.appendChild(fragment);
+}
+function hideSkeleton(){
+    detailSkeletonEl.style.display = "none"
+}
+function showSkeleton(){
+    detailSkeletonEl.style.display = "grid"
+}
+
 window.onload = () => {
     const id = params.get("q");
-    fetchData(`/products/${id}`, renderDetail, () => {})
+    fetchData(`/products/${id}`, renderDetail, hideSkeleton)
 }
 
 
